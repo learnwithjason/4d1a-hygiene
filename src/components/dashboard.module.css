@@ -1,0 +1,158 @@
+.bedtime {
+	display: grid;
+	grid-template-areas:
+		'label edit'
+		'time time'
+		'zone zone';
+
+	& :is(.label, .editLink, .timezone) {
+		color: #4a4145;
+		font-size: 0.875rem;
+		font-variant: small-caps;
+		letter-spacing: 0.25em;
+		text-transform: lowercase;
+	}
+
+	& .label {
+		grid-area: label;
+	}
+
+	& .editLink {
+		grid-area: edit;
+		text-align: right;
+	}
+
+	& .time {
+		grid-area: time;
+		font-size: clamp(3.5rem, 15vw, 5rem);
+		font-variant-numeric: tabular-nums;
+		font-weight: bold;
+		line-height: 1;
+		margin: 0;
+		text-align: center;
+	}
+
+	& .timezone {
+		grid-area: zone;
+		text-align: center;
+	}
+}
+
+.reminder {
+	text-align: center;
+
+	& .headline {
+		font-size: clamp(1rem, 5vw, 1.5rem);
+		line-height: 1.1;
+		margin-block: 2rem 1rem;
+	}
+
+	& .button {
+		background: linear-gradient(to bottom, #ff6bab, #e5609a, #c73574);
+		background-position-y: 0;
+		background-size: auto 200%;
+		border: none;
+		border-radius: 2rem;
+		display: block;
+		font-family: modak;
+		font-size: clamp(3rem, 13vw, 4.5rem);
+		overflow: hidden;
+		text-transform: uppercase;
+		transition: background-position 100ms linear;
+		width: 100%;
+
+		&:disabled {
+			background: none;
+		}
+
+		&:not(:disabled):is(:hover, :focus) {
+			background-position-y: 100%;
+		}
+
+		& svg {
+			aspect-ratio: 450 / 90;
+			display: block;
+		}
+
+		& text {
+			fill: white;
+			font-size: clamp(4rem, 13vw, 4rem);
+			paint-order: stroke;
+			stroke: black;
+			stroke-width: 7px;
+			text-anchor: middle;
+			line-height: 0.75;
+		}
+	}
+}
+
+.reminderText {
+	background: yellow;
+	border: 1px solid black;
+	border-radius: 2rem;
+	padding: 1rem;
+	text-align: center;
+}
+
+::backdrop {
+	backdrop-filter: blur(25px);
+	background-color: #0006;
+}
+
+.dialog {
+	border-radius: 2rem;
+	padding: 3rem;
+	text-align: center;
+
+	& .visuallyHidden:not(:focus):not(:active) {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: auto;
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+		white-space: nowrap;
+	}
+
+	& .inputs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	& select {
+		font-family: inherit;
+		font-size: 2rem;
+		font-variant-numeric: tabular-nums;
+		padding: 0.5rem;
+	}
+
+	& button[type='submit'] {
+		background: linear-gradient(to bottom, #ff6bab, #e5609a, #c73574);
+		background-position-y: 0;
+		background-size: auto 200%;
+		border: none;
+		border-radius: 2rem;
+		color: white;
+		display: block;
+		font-family: inherit;
+		font-size: clamp(1rem, 5vw, 1.5rem);
+		font-weight: 900;
+		overflow: hidden;
+		padding: 1rem;
+		text-transform: uppercase;
+		transition: background-position 100ms linear;
+		width: 100%;
+
+		& span {
+			text-shadow: 0 0 4px black;
+		}
+
+		&:is(:hover, :focus) {
+			background-position-y: 100%;
+		}
+	}
+}
